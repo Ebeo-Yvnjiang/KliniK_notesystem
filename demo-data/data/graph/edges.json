@@ -1,0 +1,33 @@
+[
+  {
+    "edge_id": "0000000001",
+    "from_node_id": "00000008",
+    "to_node_id": "00000010",
+    "relation_type": "derived_from",
+    "metadata": {
+      "demo": true
+    },
+    "created_at": "2026-06-24T00:00:00.000Z"
+  },
+  {
+    "edge_id": "0000000002",
+    "from_node_id": "00000009",
+    "to_node_id": "00000010",
+    "relation_type": "derived_from",
+    "metadata": {
+      "demo": true
+    },
+    "created_at": "2026-06-24T00:00:00.000Z"
+  },
+  {
+    "edge_id": "0000000003",
+    "from_node_id": "00000008",
+    "to_node_id": "00000006",
+    "relation_type": "related_to",
+    "metadata": {
+      "demo": true,
+      "note": "题目卡与模块总结之间的示例关联"
+    },
+    "created_at": "2026-06-24T00:00:00.000Z"
+  }
+]

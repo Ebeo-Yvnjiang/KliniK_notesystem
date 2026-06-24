@@ -1,0 +1,41 @@
+[
+  {
+    "node_id": "00000003",
+    "summary_node_id": "00000006",
+    "name": "电磁感应示例",
+    "slug": "demo-electromagnetism",
+    "order": 1,
+    "problemCount": 1,
+    "recursiveProblemCount": 1,
+    "todoCount": 1,
+    "filePath": "content/private/subjects/physics/modules/demo-electromagnetism.mdx",
+    "status": "active",
+    "system_placeholder": false
+  },
+  {
+    "node_id": "00000004",
+    "summary_node_id": "00000007",
+    "name": "力学示例",
+    "slug": "demo-mechanics",
+    "order": 2,
+    "problemCount": 0,
+    "recursiveProblemCount": 0,
+    "todoCount": 0,
+    "filePath": "content/private/subjects/physics/modules/demo-mechanics.mdx",
+    "status": "active",
+    "system_placeholder": false
+  },
+  {
+    "node_id": "00000005",
+    "summary_node_id": "",
+    "name": "未分类示例",
+    "slug": "demo-uncategorized",
+    "order": 3,
+    "problemCount": 1,
+    "recursiveProblemCount": 1,
+    "todoCount": 1,
+    "filePath": "",
+    "status": "active",
+    "system_placeholder": true
+  }
+]

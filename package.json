@@ -1,0 +1,36 @@
+{
+  "name": "note-system-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "demo:init": "node --no-warnings scripts/init-demo-data.ts",
+    "corrections:build-guidance": "node --no-warnings scripts/build-classification-guidance.ts",
+    "graph:check": "node --no-warnings scripts/check-graph-consistency.ts",
+    "graph:test": "node --no-warnings scripts/test-graph-operations.ts",
+    "graph:test-stage-a": "node --no-warnings scripts/test-stage-a.ts",
+    "stage-b:test": "node --no-warnings scripts/test-stage-b-classification.ts",
+    "test:ui-content": "node --no-warnings scripts/test-ui-content-features.ts",
+    "graph:manual-baseline": "node --no-warnings scripts/build-manual-override-hashes.ts",
+    "links:migrate": "node --no-warnings scripts/migrate-legacy-problem-links.ts",
+    "generate:physics": "node -e \"console.error('Private physics import script is not included in the public showcase repository. Use demo:init for sample data.'); process.exit(1)\""
+  },
+  "dependencies": {
+    "gray-matter": "latest",
+    "katex": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-markdown": "latest",
+    "rehype-katex": "latest",
+    "remark-math": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
+  }
+}

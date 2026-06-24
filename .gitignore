@@ -1,0 +1,41 @@
+.next/
+node_modules/
+coverage/
+out/
+dist/
+
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.tsbuildinfo
+
+.DS_Store
+Thumbs.db
+
+.env
+.env.*
+!.env.example
+
+.agents/
+.claude/
+.codex/
+
+# Private local data. The public repository uses demo-data/ plus
+# `pnpm run demo:init` to create a runnable local sample.
+content/private/
+test.md
+data/graph/
+data/indexes/
+data/corrections/classification-corrections.jsonl
+data/classification-trials/
+data/backups/
+
+# Generated reports may contain local/private validation details.
+data/reports/
+
+# Keep public demo fixtures and docs tracked.
+!demo-data/
+!demo-data/**

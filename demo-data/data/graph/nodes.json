@@ -1,0 +1,197 @@
+[
+  {
+    "node_id": "00000001",
+    "node_kind": "container",
+    "content_type": "knowledge_base",
+    "name": "知识库",
+    "primary_parent_id": null,
+    "status": "active",
+    "sort_order": 1,
+    "content_path": null,
+    "aliases": [],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "system_root": true,
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000002",
+    "node_kind": "container",
+    "content_type": "subject",
+    "name": "物理示例",
+    "primary_parent_id": "00000001",
+    "status": "active",
+    "sort_order": 1,
+    "content_path": null,
+    "aliases": ["Physics Demo"],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "subject_code": "physics-demo",
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000003",
+    "node_kind": "container",
+    "content_type": "module",
+    "name": "电磁感应示例",
+    "primary_parent_id": "00000002",
+    "status": "active",
+    "sort_order": 1,
+    "content_path": null,
+    "aliases": ["感应示例"],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "slug": "demo-electromagnetism",
+      "classification_keywords": ["磁通量", "感应电动势", "导体棒"],
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000004",
+    "node_kind": "container",
+    "content_type": "module",
+    "name": "力学示例",
+    "primary_parent_id": "00000002",
+    "status": "active",
+    "sort_order": 2,
+    "content_path": null,
+    "aliases": ["运动与受力示例"],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "slug": "demo-mechanics",
+      "classification_keywords": ["受力分析", "动量", "能量"],
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000005",
+    "node_kind": "container",
+    "content_type": "system_placeholder",
+    "name": "未分类示例",
+    "primary_parent_id": "00000002",
+    "status": "active",
+    "sort_order": 99,
+    "content_path": null,
+    "aliases": ["待分类"],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "slug": "demo-uncategorized",
+      "system_placeholder": true,
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000006",
+    "node_kind": "content",
+    "content_type": "module_summary",
+    "name": "电磁感应示例总结",
+    "primary_parent_id": "00000003",
+    "status": "active",
+    "sort_order": 1,
+    "content_path": "content/private/subjects/physics/modules/demo-electromagnetism.mdx",
+    "aliases": [],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "content_template": "module_summary",
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000007",
+    "node_kind": "content",
+    "content_type": "module_summary",
+    "name": "力学示例总结",
+    "primary_parent_id": "00000004",
+    "status": "active",
+    "sort_order": 1,
+    "content_path": "content/private/subjects/physics/modules/demo-mechanics.mdx",
+    "aliases": [],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "content_template": "module_summary",
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000008",
+    "node_kind": "content",
+    "content_type": "problem_note",
+    "name": "示例题：磁通量变化",
+    "primary_parent_id": "00000003",
+    "status": "active",
+    "sort_order": 2,
+    "content_path": "content/private/subjects/physics/problem-notes/demo-em-001.mdx",
+    "aliases": ["demo-em-001"],
+    "external_ids": ["demo-em-001"],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "legacy_problem_id": "demo-em-001",
+      "anchor_type": "demo",
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000009",
+    "node_kind": "content",
+    "content_type": "problem_note",
+    "name": "示例题：受力分析待分类",
+    "primary_parent_id": "00000005",
+    "status": "active",
+    "sort_order": 1,
+    "content_path": "content/private/subjects/physics/problem-notes/demo-uncategorized-001.mdx",
+    "aliases": ["demo-uncategorized-001"],
+    "external_ids": ["demo-uncategorized-001"],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "legacy_problem_id": "demo-uncategorized-001",
+      "anchor_type": "demo",
+      "demo": true
+    }
+  },
+  {
+    "node_id": "00000010",
+    "node_kind": "content",
+    "content_type": "raw_note",
+    "name": "示例原始笔记归档",
+    "primary_parent_id": "00000002",
+    "status": "active",
+    "sort_order": 100,
+    "content_path": "content/private/raw-notes/demo-original.md",
+    "aliases": [],
+    "external_ids": [],
+    "permission_policy_id": "owner-full-control",
+    "created_at": "2026-06-24T00:00:00.000Z",
+    "updated_at": "2026-06-24T00:00:00.000Z",
+    "metadata": {
+      "immutable_archive": true,
+      "demo": true
+    }
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "permission_policy_id": "owner-full-control",
+    "name": "本地管理员完全控制",
+    "description": "单管理员本地演示策略；保留未来角色扩展结构。",
+    "inherit_from_parent": true,
+    "grants": {
+      "local_admin": [
+        "view",
+        "edit",
+        "move",
+        "create_child",
+        "create_edge",
+        "archive",
+        "delete",
+        "rekey",
+        "manage_permissions"
+      ]
+    }
+  }
+]
