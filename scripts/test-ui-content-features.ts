@@ -114,7 +114,7 @@ assert(
   parentCandidateDecision(
     graph,
     problemNodeForParent.node_id,
-    moduleNodeForCreate.node_id,
+    null,
   ).allowed,
   "父节点候选仍被节点类型限制。",
 );

@@ -1,131 +1,127 @@
-# KliniK 笔记系统
+# KliniK 笔记系统 · KliniK Note System
 
-一个面向个人学习过程的知识块笔记系统。它从高中物理笔记整理起步，但目标不是做一个简单的 Markdown 文件夹、错题本或资料仓库，而是把学习资料拆成可以长期调整、互相关联、持续深化的知识块。
+## Quick Overview / 项目速览
 
-在这个系统里，一道题、一段原始笔记、一个知识点总结、一次错因分析、一个复习提示，都可以成为独立节点。节点之间既可以有主要归属，也可以通过关系边表达来源、引用、关联、替代和快捷入口。这样，笔记不再只是按文件夹静态存放，而可以随着理解变化不断重组。
+KliniK 是一个把学习资料拆成“知识块”的个人知识系统。每条笔记都有稳定身份，可以被重新分类、移动、关联和深化，而不会丢失链接或历史。当前公开版本已经实现节点图、正文管理、安全操作和分类建议流原型；更深入的 AI 提取与内容深化仍属于后续方向。
 
-> 隐私说明：公开仓库不包含真实私人笔记、错题、原始归档、审计日志或备份。仓库内只包含系统代码、文档和脱敏 demo 数据。
+KliniK is a graph-based knowledge-block note system for long-term learning materials. It replaces folders of Markdown files with stable nodes, one primary parent, and typed edges. The public snapshot includes graph management, managed content, safe operations and an AI-assisted classification workflow prototype; deeper AI extraction and note refinement remain future work.
 
-## 项目动机
+> 当前公开仓库展示的是脱敏后的个人项目快照：不包含真实私人笔记、错题、原始归档、审计日志或备份。
 
-普通笔记软件通常更擅长记录和检索文本，但学习资料的问题不只是“存下来”。真实学习过程中，笔记会不断变化：
+## Why this project / 项目动机
 
-- 原始笔记需要被拆成题目、知识点、错因、总结和复习提示；
-- 一个知识点可能同时关联多道题、多个模块和多次错误经验；
-- 人对知识的分类判断会随着学习深入而变化；
-- AI 可以辅助整理、提取和深化，但不能直接替代人的理解判断。
+普通笔记软件擅长记录文本，但学习资料的问题不只是“存下来”。真实学习过程中，一段原始笔记可能会逐渐拆成题目、知识点、错因、总结和复习提示；一个知识点可能关联多道题、多个来源和多次错误经验；人的分类判断也会随着理解深入而变化。
 
-因此，这个项目的核心目标不是把 Markdown 包一层 UI，而是建立一套适合学习资料长期演化的结构：稳定的知识块身份、可调整的归属关系、可追溯的来源记录，以及人和 AI 协同改进分类与内容理解的工作流。
+KliniK 的目标不是把 Markdown 包一层 UI，而是建立一套适合长期学习资料演化的结构：稳定的知识块身份、可调整的归属关系、可追溯的来源记录，以及由人工判断主导、AI 建议辅助的整理流程。
 
-## 核心理念
+## Core ideas / 核心理念
 
 ### 知识块，而不是普通文件
 
-系统把学习内容拆成节点。节点可以表示题目、知识点、模块总结、原始笔记、错题笔记。每个节点都有稳定 ID，不依赖标题、目录或当前位置。
+系统把学习内容拆成节点。节点可以表示题目、知识点、模块总结、原始笔记或错题笔记。每个节点都有稳定 `node_id`，不依赖标题、目录或当前位置。
 
-这样做的好处是：笔记可以被重新分类、移动、拆分、关联，而不会丢失身份和历史。
+这样，笔记可以被重新分类、移动、拆分、关联，而不会丢失身份和历史。
 
-### 关系可以被灵活调整
+### 主要归属与关系边并存
 
 一个节点有唯一主要归属，用于默认导航、排序、权限继承和统计；同时也可以通过关系边连接到其他节点，表达来源、引用、关联、替代或快捷入口。
 
-这使系统既保留了树状结构的清晰性，又能表达真实学习中复杂的知识联系。
+这使系统既保留树状结构的清晰性，又能表达真实学习中复杂的知识联系。
 
 ### 人的判断与 AI 建议共同进化
 
-系统不会把 AI 当成自动改写和自动分类的权威。相反，AI 的作用是提出建议、生成草稿、辅助提取信息；最终是否采纳，仍由用户确认。
+系统不会把 AI 当成自动改写和自动分类的权威。当前已经实现的是分类经验记录、指导摘要、未分类建议流原型：AI 建议以草稿形式导入，用户确认后才会真正移动节点。
 
-用户每一次人工分类、修正和确认，都可以沉淀为后续 AI 分类建议的参考。也就是说，系统让人的判断和 AI 的建议逐步形成反馈循环——这比单纯的 AI 辅助更加精准。
+后续 AI 能力会继续围绕“辅助理解”展开：从原始笔记中提取题干、卡点、错因、关键式子、破题点和可迁移结论，并保留来源、证据和置信度。
 
-### AI 用来深化理解，而不只是补写空白
+## Data model / 数据模型
 
-后续的 AI 能力不只是“把空白内容补满”，而是帮助用户从原始笔记中提取题干、卡点、错因、关键式子、破题点和可迁移结论。
+```mermaid
+graph TD
+    KB["知识库<br/>node_id: 00000001"]
+    S["物理示例<br/>node_id: 00000002"]
+    M["电磁感应示例<br/>node_id: 00000003"]
+    Summary["电磁感应示例总结<br/>node_id: 00000006"]
+    Problem["示例题：磁通量变化<br/>node_id: 00000008"]
+    Raw["示例原始笔记归档<br/>node_id: 00000010"]
+    Indexes["Derived indexes<br/>search / problem / module"]
+    Ops["Audit / backup<br/>safe operations"]
 
-AI 生成的内容应当保留来源、证据和置信度，并区分“原文明确写了什么”和“AI 推断了什么”。这样，AI 不是帮人撰写“学习痕迹”，而是帮助人把已有理解整理得更清楚、更可复习。
+    KB --- S
+    S --- M
+    M --- Summary
+    M --- Problem
+    S --- Raw
+    Problem -. related_to .-> Summary
+    Problem -. derived_from .-> Raw
+    Problem -. rebuilds .-> Indexes
+    Ops -. records .-> Problem
 
-## 当前已实现
+    classDef root fill:#F1EFE8,stroke:#5F5E5A,color:#2C2C2A;
+    classDef module fill:#E8F0FE,stroke:#315CA8,color:#102A5C;
+    classDef content fill:#E1F5EE,stroke:#0F6E56,color:#04342C;
+    classDef problem fill:#FAECE7,stroke:#993C1D,color:#4A1B0C;
+    classDef system fill:#F5F5F5,stroke:#777,color:#222;
+    class KB,S root;
+    class M module;
+    class Summary,Raw content;
+    class Problem problem;
+    class Indexes,Ops system;
+```
 
-- 基于全局稳定 `node_id` 的知识块管理；
-- 节点创建、改名、移动、批量移动、排序、归档、恢复、删除和合并；
+- 实线 = 主归属 `primary_parent_id`，用于导航、排序和默认组织。
+- Solid line = `primary_parent_id`, used for navigation, ordering and the default tree.
+- 虚线 = 跨节点关系 `edges`，用于来源、引用、关联、替代等。
+- Dashed arrow = typed `edges`, used for source, cites, related, supersedes, etc.
+- 节点身份 = 稳定 `node_id`，改名或移动不会断链。
+- Identity = stable `node_id`; renaming or moving does not break links.
+
+## What is implemented / 当前能力
+
+### Knowledge blocks and graph structure
+
+- 全局稳定 `node_id`；
+- `primary_parent_id` 表达主要归属；
+- typed `edges` 表达来源、引用、关联和快捷入口；
 - 任意有效节点原则上都可以拥有正文、子节点和关系边；
-- `primary_parent_id` 表达主要归属，用于导航、排序、权限继承和统计；
-- `edges` 表达来源、引用、关联、快捷入口等跨节点关系；
-- Markdown / MDX 正文编辑，支持内容哈希冲突检测和手动编辑保护；
-- 全文搜索，只搜索图系统登记的受管理内容；
-- 管理操作的预览、版本校验、备份、审计和回滚；
-- 派生索引重建和图一致性检查；
-- 人工分类修正记录和经验摘要；
-- 未分类内容的 AI 建议流原型：导出任务包、导入建议 JSON、人工确认后再移动节点；
-- 脱敏 demo 数据和公开展示文档。
+- 受管理正文与节点所有权绑定，避免同一内容被多个节点重复拥有。
 
-## 技术设计
+### Safe graph operations
 
-### 稳定节点 ID
+- 节点创建、改名、移动、批量移动、排序、归档、恢复、删除和合并；
+- 危险操作先预览影响范围；
+- 提交时校验 graph version hash，避免旧页面覆盖新修改；
+- 操作前创建备份，操作后写入审计；
+- 管理页面提供备份查看和恢复入口。
 
-系统使用全局唯一的 8 位 `node_id` 作为节点身份。节点的显示名称、主要父节点、排序、内容路径和展示方式都可以变化，但规范路由保持稳定：
+### Search and content editing
 
-```text
-/nodes/{node_id}
-```
+- Markdown / MDX 正文编辑；
+- 内容哈希冲突检测；
+- `manual_override` 人工编辑保护；
+- 全文搜索只读取图系统登记的受管理内容；
+- 项目文档、配置、备份和审计日志不会进入网页内容编辑器或普通搜索。
 
-这使笔记可以长期重组，而不会因为改名或移动导致链接失效。
+### AI-assisted classification workflow prototype
 
-### 主要归属 + 跨节点关系
+- 人工分类修正记录；
+- 压缩分类指导摘要；
+- 未分类内容任务包导出；
+- AI 建议 JSON 导入；
+- 建议进入待确认状态，接受或改判后才走现有移动预览、版本校验、备份和审计流程。
 
-系统不把内容固定在单一的“科目 / 模块 / 题目”层级里，而是使用：
-
-```text
-nodes
-+ primary_parent_id
-+ typed edges
-```
-
-`primary_parent_id` 负责默认组织位置、导航、排序、权限继承和统计。
-
-`edges` 负责表达来源、引用、关联、替代和快捷入口。
-
-这让一个知识块既可以有清晰的默认位置，也可以和其他知识块建立多种关系。
-
-### 可恢复的管理操作
-
-涉及图结构的危险操作不会直接写入数据，而是经过：
-
-1. 预览影响范围；
-2. 校验图版本 hash；
-3. 创建备份；
-4. 原子写入；
-5. 重建派生索引；
-6. 写入审计事件；
-7. 运行一致性检查。
-
-这些机制用于降低长期整理中的误操作风险，使移动、合并、归档、恢复、ID 修改等操作可检查、可追踪、可回滚。
-
-### 内容保护
-
-正文编辑使用内容哈希检测并发修改，并记录手动编辑状态。普通生成流程不会静默覆盖人工维护过的正文。
-
-这对学习笔记尤其重要：原始表达、错因、卡点和个人理解不能被批量脚本或 AI 草稿无意覆盖。
-
-### 派生索引可重建
-
-题目索引、模块统计、搜索数据和分类摘要等都被视为派生数据。权威数据来自节点图、关系图和受管理正文。
-
-这样可以避免多个文件各自维护一份状态而逐渐漂移。
-
-## 与普通笔记系统的区别
+## How it differs from normal note apps / 与普通笔记系统的区别
 
 普通笔记系统通常以文件、文件夹、标签或双链为核心。本项目更关注学习资料在长期使用中的演化过程。
 
 - 它管理的是知识块，而不只是文本文件；
 - 它允许内容归属和关系被持续调整；
 - 它区分主要归属和跨节点关系，避免把所有联系都塞进单一目录结构；
-- 它保留人工分类和修正经验，为后续 AI 建议提供上下文；
-- 它强调 AI 草稿和建议必须经过人工确认；
+- 它保留人工分类和修正经验，为后续建议提供上下文；
+- 它强调草稿和建议必须经过人工确认；
 - 它通过备份、审计、哈希保护和一致性检查，降低长期重构中的数据风险。
 
-因此，这个系统更适合管理题目、错因、知识点、原始笔记和复习材料之间的长期关系，而不是只做静态笔记存储。
-
-## 本地运行
+## Local setup / 本地运行
 
 环境要求：
 
@@ -172,7 +168,7 @@ pnpm run stage-b:test
 pnpm run build
 ```
 
-## Demo 数据
+## Demo data / Demo 数据
 
 仓库包含 `demo-data/`，用于生成一套最小脱敏样例：
 
@@ -181,40 +177,31 @@ pnpm run build
 - 2 个模块容器；
 - 2 张示例题目卡；
 - 1 份原始笔记归档；
-- 示例分类摘要。
+- 示例分类摘要和建议流记录。
 
 这套数据可用于演示搜索、节点页面、管理页面和未分类建议流。真实私人数据目录在 `.gitignore` 中被排除，不会进入公开仓库。
 
-## 当前状态
+## Repository history and privacy / 仓库历史与隐私说明
 
-已经完成：
+公开分支 `showcase-public` 是私有开发仓库的一次压缩、脱敏快照，因此只有一个提交。私人开发历史中包含真实笔记、备份、审计日志和本地图数据，所以不会公开推送。本仓库用于展示架构与工程能力，不包含真实私人学习资料。
 
-- 稳定节点系统；
-- 基础管理页面；
-- 正文编辑器；
-- 全文搜索；
-- 备份、恢复和审计；
-- 图一致性检查；
-- 分类经验摘要；
-- 未分类建议流原型；
-- 脱敏 demo 数据和公开展示文档。
+The public branch `showcase-public` is a squashed and desensitized snapshot of a private development repository, hence the single commit. The private history contains real notes, backups, audit logs and local graph data, so it is not pushed publicly. This repository showcases the architecture and engineering work without exposing private learning materials.
 
-还没有完成：
+以下内容默认不提交：
 
-- 外部 AI 服务接入；
-- 自动批量分类；
-- OCR；
-- 题干自动抓取；
-- 大规模 AI 内容补全；
-- 多用户权限；
-- 网络部署；
-- 大规模 demo 数据集。
+- `content/private/` 真实笔记；
+- `data/graph/` 本地图数据；
+- `data/indexes/` 派生索引；
+- `data/backups/` 备份；
+- `data/corrections/classification-corrections.jsonl` 人工分类日志；
+- `data/classification-trials/` 建议流试运行记录；
+- `.env*` 环境变量文件。
 
-## 后续计划
+## Roadmap / 后续计划
 
 ### 更多笔记导入
 
-继续导入更多物理笔记，并逐步支持其他学科。导入时利用已有分类经验摘要，提高 AI 初步分类的效率与精准度，但最终仍由用户确认。
+继续导入更多物理笔记，并逐步支持其他学科。导入时利用已有分类经验摘要，提高初步分类建议的效率与精准度，但最终仍由用户确认。
 
 ### AI 辅助分类
 
@@ -232,16 +219,6 @@ pnpm run build
 
 未来可能扩展到网络环境，并引入 public/private 内容区分、多用户访问和更细粒度的权限控制。
 
-## 隐私与开源说明
+## License
 
-本仓库用于展示系统架构和工程能力，不公开真实私人学习资料。以下内容默认不提交：
-
-- `content/private/` 真实笔记；
-- `data/graph/` 本地图数据；
-- `data/indexes/` 派生索引；
-- `data/backups/` 备份；
-- `data/corrections/classification-corrections.jsonl` 人工分类日志；
-- `data/classification-trials/` 建议流试运行记录；
-- `.env*` 环境变量文件。
-
-如果你要基于本项目继续开发，请先运行 demo 初始化，或按自己的数据重新建立图数据。
+This project is released under the MIT License. See [LICENSE](LICENSE) for details.
